@@ -1,2 +1,7 @@
 # kismet-antlr
-Kismet dice roll parser generator
+
+ANTLR Grammar for the Kismet family of dice roll parsers
+
+## Setup
+
+* [Install ANTLR v4](https://github.com/antlr/antlr4/blob/master/doc/getting-started.md)
