@@ -8,12 +8,6 @@ ANTLR Grammar for the Kismet family of dice roll parsers
 
 ## Usage
 
-* Build default target (Java)
-
-```
-./gradlew build
-```
-
 * Run Antlr TestRig
 
 ```
@@ -21,5 +15,4 @@ ANTLR Grammar for the Kismet family of dice roll parsers
 ```
 
 **NOTE:** Gradle may appear to hang at 80%,
-but the TestRig is running
-and accepting input
+but TestRig is running and accepting input
