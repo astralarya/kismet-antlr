@@ -18,6 +18,9 @@ Generate source files for the
 [target language](https://github.com/antlr/antlr4/blob/master/doc/targets.md)
 (default Java).
 
+Output is located at
+`build/generated-src/antlr/main/`.
+
 ### Run Antlr TestRig
 
 ```
