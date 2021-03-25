@@ -8,11 +8,23 @@ ANTLR Grammar for the Kismet family of dice roll parsers
 
 ## Usage
 
-* Run Antlr TestRig
+### Generate grammar source
+
+```
+./gradlew generateGrammarSource [-Planguage=LANGUAGE]
+```
+
+Generate source files for the
+[target language](https://github.com/antlr/antlr4/blob/master/doc/targets.md)
+(default Java).
+
+### Run Antlr TestRig
 
 ```
 ./gradlew testrig
 ```
+
+Test the grammar in the interactive Antlr TestRig.
 
 **NOTE:** Gradle may appear to hang at 80%,
 but TestRig is running and accepting input

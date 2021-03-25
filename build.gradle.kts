@@ -1,4 +1,6 @@
 
+val language: String? by project
+
 plugins {
   antlr
   java
@@ -19,4 +21,10 @@ task("testrig", JavaExec::class) {
   classpath = sourceSets["main"].runtimeClasspath
   args("Kismet", "start", "-tree")
   standardInput = System.`in`
+}
+
+tasks.generateGrammarSource {
+  if (language != null) {
+    arguments = arguments + listOf("-Dlanguage="+language)
+  }
 }
