@@ -13,10 +13,6 @@ start
   ;
 
 expr
-  : sumExpr
-  ;
-
-sumExpr
   : multExpr ((PLUS | MINUS) multExpr)*
   ;
 
@@ -31,6 +27,7 @@ powExpr
 signedAtom
   : PLUS signedAtom
   | MINUS signedAtom
+  | function
   | atom
   ;
 
@@ -53,6 +50,10 @@ constant
 
 variable
   : VARIABLE
+  ;
+
+function
+  : variable LPAREN expr (COMMA expr)* RPAREN
   ;
 
 comparison
