@@ -83,6 +83,19 @@ POW
   : '^'
   ;
 
+ROLL
+  : DIE ('0' .. '9')+
+  ;
+
+ROLL_FUNC
+  : DIE '.' VARIABLE
+  ;
+
+DIE
+  : 'd'
+  | 'D'
+  ;
+
 PI
   : 'pi'
   ;
@@ -93,11 +106,6 @@ EULER
 
 I
   : 'i'
-  ;
-
-D
-  : 'd'
-  | 'D'
   ;
 
 VARIABLE

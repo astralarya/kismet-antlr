@@ -28,6 +28,7 @@ signedAtom
   : PLUS signedAtom
   | MINUS signedAtom
   | function
+  | roll
   | atom
   ;
 
@@ -53,7 +54,20 @@ variable
   ;
 
 function
-  : variable LPAREN expr (COMMA expr)* RPAREN
+  : roll_func LPAREN expr (COMMA expr)* RPAREN
+  | variable LPAREN expr (COMMA expr)* RPAREN
+  ;
+
+roll_func
+  : ROLL_FUNC
+  ;
+
+roll
+  : NUMBER? ROLL
+  ;
+
+die
+  : DIE
   ;
 
 comparison
