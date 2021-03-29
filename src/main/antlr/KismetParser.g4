@@ -13,9 +13,67 @@ start
   ;
 
 expr
-  : sum
+  : multExpr ((PLUS | MINUS) multExpr)*
   ;
 
-sum
-  : NUMBER PLUS NUMBER
+multExpr
+  : powExpr ((TIMES | DIV) powExpr)*
   ;
+
+powExpr
+  : signedAtom (POW signedAtom)*
+  ;
+
+signedAtom
+  : PLUS signedAtom
+  | MINUS signedAtom
+  | function
+  | roll
+  | atom
+  ;
+
+atom
+  : number
+  | variable
+  | constant
+  | LPAREN expr RPAREN
+  ;
+
+number
+  : NUMBER
+  ;
+
+constant
+  : PI
+  | EULER
+  | I
+  ;
+
+variable
+  : VARIABLE
+  ;
+
+function
+  : roll_func LPAREN expr (COMMA expr)* RPAREN
+  | variable LPAREN expr (COMMA expr)* RPAREN
+  ;
+
+roll_func
+  : ROLL_FUNC
+  ;
+
+roll
+  : NUMBER? ROLL
+  ;
+
+die
+  : DIE
+  ;
+
+comparison
+  : EQ
+  | GT
+  | LT
+  | GTE
+  | LTE
+;
