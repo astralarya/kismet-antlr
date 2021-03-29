@@ -1,7 +1,7 @@
 
 val antlrGrammar: String? by project
 val antlrGrammarStart: String? by project
-val antlrArgs: String? by project
+val antlrArguments: String? by project
 val antlrLanguage: String? by project
 
 plugins {
@@ -28,8 +28,8 @@ task("testrig", JavaExec::class) {
 
 tasks.generateGrammarSource {
   group = "build"
-  if (antlrArgs != null) {
-    arguments = arguments + antlrArgs.toString().split(" ")
+  if (antlrArguments != null) {
+    arguments = arguments + antlrArguments.toString().split(" ")
   }
   if (antlrLanguage != null) {
     arguments = arguments + listOf("-Dlanguage="+antlrLanguage)
