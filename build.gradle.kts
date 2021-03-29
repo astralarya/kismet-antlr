@@ -27,6 +27,7 @@ task("testrig", JavaExec::class) {
 }
 
 tasks.generateGrammarSource {
+  group = "build"
   if (antlrArgs != null) {
     arguments = arguments + antlrArgs.toString().split(" ")
   }
