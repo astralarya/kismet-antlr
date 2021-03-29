@@ -2,7 +2,7 @@
 val antlrGrammar: String? by project
 val antlrGrammarStart: String? by project
 val antlrArgs: String? by project
-val language: String? by project
+val antlrLanguage: String? by project
 
 plugins {
   antlr
@@ -30,7 +30,7 @@ tasks.generateGrammarSource {
   if (antlrArgs != null) {
     arguments = arguments + antlrArgs.toString().split(" ")
   }
-  if (language != null) {
-    arguments = arguments + listOf("-Dlanguage="+language)
+  if (antlrLanguage != null) {
+    arguments = arguments + listOf("-Dlanguage="+antlrLanguage)
   }
 }

@@ -11,14 +11,12 @@ ANTLR Grammar for the Kismet family of dice roll parsers
 ### Generate grammar source
 
 ```
-./gradlew generateGrammarSource [-Planguage=LANGUAGE] [-PantlrArgs=ARGS]
+./gradlew generateGrammarSource [-PantlrLanguage=LANGUAGE]
 ```
 
 Generate source files for the
 [target language](https://github.com/antlr/antlr4/blob/master/doc/targets.md)
-(default Java).
-Pass additional arguments to ANTLR in `ARGS`
-(quote to pass multiple).
+`LANGUAGE` (default Java).
 
 Output is located at
 `build/generated-src/antlr/main/`.
@@ -32,4 +30,5 @@ Output is located at
 Test the grammar in the interactive ANTLR TestRig.
 
 **NOTE:** Gradle may appear to hang at 80%,
-but TestRig is running and accepting input
+but TestRig is running and accepting input.
+Use CTRL+D to send EOF.
