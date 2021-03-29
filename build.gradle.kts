@@ -1,6 +1,8 @@
 
-val language: String? by project
+val antlrGrammar: String? by project
+val antlrGrammarStart: String? by project
 val antlrArgs: String? by project
+val language: String? by project
 
 plugins {
   antlr
@@ -20,7 +22,7 @@ task("testrig", JavaExec::class) {
   description = "Test the parser in Antlr TestRig"
   main = "org.antlr.v4.gui.TestRig"
   classpath = sourceSets["main"].runtimeClasspath
-  args("Kismet", "start", "-tree")
+  args(antlrGrammar, antlrGrammarStart, "-tree")
   standardInput = System.`in`
 }
 
