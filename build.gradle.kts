@@ -1,5 +1,6 @@
 
 val language: String? by project
+val antlrArgs: String? by project
 
 plugins {
   antlr
@@ -24,6 +25,9 @@ task("testrig", JavaExec::class) {
 }
 
 tasks.generateGrammarSource {
+  if (antlrArgs != null) {
+    arguments = arguments + antlrArgs.toString().split(" ")
+  }
   if (language != null) {
     arguments = arguments + listOf("-Dlanguage="+language)
   }
