@@ -59,11 +59,11 @@ function
   ;
 
 roll_func
-  : ROLL_FUNC
+  : atom? ROLL_FUNC
   ;
 
 roll
-  : NUMBER? ROLL
+  : atom? ROLL
   ;
 
 die
