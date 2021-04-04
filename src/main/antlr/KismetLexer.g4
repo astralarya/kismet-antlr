@@ -36,6 +36,10 @@ MOD
   : '%'
   ;
 
+ASSIGN
+  : '='
+  ;
+
 GT
   : '>'
   ;
@@ -96,16 +100,12 @@ DIE
   | 'D'
   ;
 
-PI
-  : 'pi'
+TRUE
+  : 'true'
   ;
 
-EULER
-  : E2
-  ;
-
-I
-  : 'i'
+FALSE
+  : 'false'
   ;
 
 VARIABLE
@@ -121,25 +121,25 @@ fragment ID_CHAR
   ;
 
 NUMBER
-  : NUMBER_PART ((E1 | E2) SIGN? NUMBER_PART)?
+  : NUMBER_PART (('e' | 'E') SIGN? NUMBER_PART)?
   ;
 
 fragment NUMBER_PART
   : ('0' .. '9')+ ('.' ('0' .. '9')+)?
   ;
 
-fragment E1
-  : 'E'
-  ;
-
-fragment E2
-  : 'e'
-  ;
-
 fragment SIGN
   : ('+' | '-')
   ;
 
+NEWLINE
+  : '\n'
+  ;
+
+SEMICOLON
+  : ';'
+  ;
+
 WHITESPACE
-  : [ \r\n\t]+ -> skip
+  : [ \r\t]+ -> skip
   ;

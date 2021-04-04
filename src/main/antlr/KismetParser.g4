@@ -9,15 +9,36 @@ options {
 // Parser
 
 start
-  : expr*
+  : statement? ((NEWLINE | SEMICOLON) statement?)*
+  ;
+
+statement
+  : assignment
+  | expr
+  ;
+
+assignment
+  : variable ASSIGN expr
   ;
 
 expr
+  : andExpr (OR andExpr)*
+  ;
+
+andExpr
+  : cmprExpr (AND cmprExpr)*
+  ;
+
+cmprExpr
+  : addExpr (comparison addExpr)?
+  ;
+
+addExpr
   : multExpr ((PLUS | MINUS) multExpr)*
   ;
 
 multExpr
-  : powExpr ((TIMES | DIV) powExpr)*
+  : powExpr ((TIMES | DIV | IDIV | MOD) powExpr)*
   ;
 
 powExpr
@@ -44,9 +65,8 @@ number
   ;
 
 constant
-  : PI
-  | EULER
-  | I
+  : TRUE
+  | FALSE
   ;
 
 variable
