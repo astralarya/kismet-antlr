@@ -136,12 +136,20 @@ fragment ID_CHAR
   : ID_START | ('0' .. '9')
   ;
 
-NUMBER
-  : NUMBER_PART (('e' | 'E') SIGN? NUMBER_PART)?
+INTEGER
+  : INTEGER_START INTEGER_CHAR*
   ;
 
-fragment NUMBER_PART
-  : ('0' .. '9')+ ('.' ('0' .. '9')+)?
+fragment INTEGER_START
+  : ('0' .. '9')
+  ;
+
+fragment INTEGER_CHAR
+  : INTEGER_START | '_'
+  ;
+
+FLOAT
+  : INTEGER '.' INTEGER? (('e' | 'E') SIGN? INTEGER ('.' INTEGER)?)?
   ;
 
 fragment SIGN

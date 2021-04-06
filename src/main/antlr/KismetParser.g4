@@ -61,7 +61,8 @@ atom
   ;
 
 number
-  : NUMBER
+  : INTEGER
+  | FLOAT
   ;
 
 boolean
