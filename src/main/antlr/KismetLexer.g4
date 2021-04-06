@@ -137,23 +137,53 @@ VARIABLE
   ;
 
 fragment ID_START
-  : ('a' .. 'z') | ('A' .. 'Z') | '_'
+  : [a-zA-Z_]
   ;
 
 fragment ID_CHAR
-  : ID_START | ('0' .. '9')
+  : ID_START | [0-9]
   ;
 
-INTEGER
-  : INTEGER_START INTEGER_CHAR*
+DECIMAL
+  : DECIMAL_START DECIMAL_CHAR*
   ;
 
-fragment INTEGER_START
-  : ('0' .. '9')
+fragment DECIMAL_START
+  : [0-9]
   ;
 
-fragment INTEGER_CHAR
-  : INTEGER_START | '_'
+fragment DECIMAL_CHAR
+  : DECIMAL_START | '_'
+  ;
+
+HEXADECIMAL
+  : HEXADECIMAL_START HEXADECIMAL_CHAR+
+  ;
+
+fragment HEXADECIMAL_START
+  : '0x'
+  | '0X'
+  ;
+
+fragment HEX
+  : [0-9a-fA-F]
+  ;
+
+fragment HEXADECIMAL_CHAR
+  : HEX | '_'
+  ;
+
+BINARY
+  : BINARY_START BINARY_CHAR+
+  ;
+
+fragment BINARY_START
+  : '0b'
+  | '0B'
+  ;
+
+fragment BINARY_CHAR
+  : [01_]
   ;
 
 FLOAT
@@ -161,8 +191,8 @@ FLOAT
   ;
 
 fragment FLOAT_PART
-  : INTEGER '.' INTEGER?
-  | INTEGER? '.' INTEGER
+  : DECIMAL '.' DECIMAL?
+  | DECIMAL? '.' DECIMAL
   ;
 
 fragment SIGN

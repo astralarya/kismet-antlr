@@ -61,7 +61,9 @@ atom
   ;
 
 number
-  : INTEGER
+  : DECIMAL
+  | HEXADECIMAL
+  | BINARY
   | FLOAT
   ;
 
