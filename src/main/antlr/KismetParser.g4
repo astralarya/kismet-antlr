@@ -56,7 +56,7 @@ signedAtom
 atom
   : number
   | variable
-  | constant
+  | boolean
   | LPAREN expr RPAREN
   ;
 
@@ -64,9 +64,11 @@ number
   : NUMBER
   ;
 
-constant
+boolean
   : TRUE
   | FALSE
+  | NULL
+  | UNDEFINED
   ;
 
 variable

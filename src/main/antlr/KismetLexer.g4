@@ -116,6 +116,14 @@ FALSE
   : 'false'
   ;
 
+NULL
+  : 'null'
+  ;
+
+UNDEFINED
+  : 'undefined'
+  ;
+
 VARIABLE
   : ID_START ID_CHAR*
   ;
