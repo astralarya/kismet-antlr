@@ -20,6 +20,14 @@ RBRACKET
   : ']'
   ;
 
+LBRACE
+  : '{'
+  ;
+
+RBRACE
+  : '}'
+  ;
+
 PLUS
   : '+'
   ;
