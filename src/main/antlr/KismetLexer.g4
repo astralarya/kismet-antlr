@@ -12,6 +12,14 @@ RPAREN
   : ')'
   ;
 
+LBRACKET
+  : '['
+  ;
+
+RBRACKET
+  : ']'
+  ;
+
 PLUS
   : '+'
   ;
