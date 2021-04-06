@@ -149,7 +149,12 @@ fragment INTEGER_CHAR
   ;
 
 FLOAT
-  : INTEGER '.' INTEGER? (('e' | 'E') SIGN? INTEGER ('.' INTEGER)?)?
+  : FLOAT_PART (('e' | 'E') SIGN? FLOAT_PART)?
+  ;
+
+fragment FLOAT_PART
+  : INTEGER '.' INTEGER?
+  | INTEGER? '.' INTEGER
   ;
 
 fragment SIGN
