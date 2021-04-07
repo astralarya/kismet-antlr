@@ -89,7 +89,7 @@ function
   ;
 
 roll_func
-  : atom? DIE POINT id
+  : atom? DIE DOT id
   ;
 
 roll

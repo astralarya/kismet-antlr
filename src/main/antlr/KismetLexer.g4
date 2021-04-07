@@ -4,129 +4,48 @@ lexer grammar KismetLexer;
 
 // Lexer
 
-LPAREN
-  : '('
-  ;
-
-RPAREN
-  : ')'
-  ;
-
-LBRACKET
-  : '['
-  ;
-
-RBRACKET
-  : ']'
-  ;
-
-LBRACE
-  : '{'
-  ;
-
-RBRACE
-  : '}'
-  ;
-
-PLUS
-  : '+'
-  ;
-
-MINUS
-  : '-'
-  ;
-
-TIMES
-  : '*'
-  ;
-
-DIV
-  : '/'
-  ;
-
-IDIV
-  : '//'
-  ;
-
-MOD
-  : '%'
-  ;
-
-ASSIGN
-  : '='
-  ;
-
-GT
-  : '>'
-  ;
-
-LT
-  : '<'
-  ;
-
-GTE
-  : '>='
-  | '≥'
-  ;
-
-LTE
-  : '<='
-  | '≤'
-  ;
-
-EQ
-  : '=='
-  ;
-
-NEQ
-  : '!='
-  | '≠'
-  ;
-
-AND
-  : '&&'
-  ;
-
-OR
-  : '||'
-  ;
-
-COMMA
-  : ','
-  ;
-
-POINT
-  : '.'
-  ;
-
-POW
-  : '^'
-  ;
+LBRACE : '{' ;
+RBRACE : '}' ;
+LBRACKET : '[' ;
+RBRACKET : ']' ;
+LPAREN : '(' ;
+RPAREN : ')' ;
+SEMICOLON : ';' ;
+COMMA : ',' ;
+ASSIGN : '=' ;
+ELLIPSIS : '...' ;
+DOT : '.' ;
+PLUS : '+' ;
+MINUS : '-' ;
+TIMES : '*' ;
+DIV : '/' ;
+IDIV : '//' ;
+MOD : '%' ;
+GT : '>' ;
+LT : '<' ;
+GTE : '>=' | '≥' ;
+LTE : '<=' | '≤' ;
+EQ : '==' ;
+NEQ : '!=' | '≠' ;
+SS_AND : '&&' ;
+SS_OR : '||' ;
+POW : '^' ;
+DIE : 'd' | 'D' ;
 
 ROLL
   : DIE ('0' .. '9')+
   ;
 
-DIE
-  : 'd'
-  | 'D'
-  ;
+TRUE : 'true' ;
+FALSE : 'false' ;
+NULL : 'null' ;
+UNDEFINED : 'undefined' ;
 
-TRUE
-  : 'true'
-  ;
-
-FALSE
-  : 'false'
-  ;
-
-NULL
-  : 'null'
-  ;
-
-UNDEFINED
-  : 'undefined'
-  ;
+AND : 'and' ;
+OR : 'or' ;
+XOR : 'xor' ;
+NAND : 'nand' ;
+NOT : 'not' ;
 
 STRING
   : '"' DOUBLE_QUOTE_CHAR* '"'
@@ -212,10 +131,6 @@ fragment SIGN
 
 NEWLINE
   : '\n'
-  ;
-
-SEMICOLON
-  : ';'
   ;
 
 WHITESPACE
