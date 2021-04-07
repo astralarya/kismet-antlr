@@ -13,59 +13,48 @@ start
   ;
 
 statement
-  : assignment
-  | expr
+  : expr
   ;
 
-assignment
-  : id ASSIGN expr
+arguments
+  : LPAREN (argumentList COMMA?)? RPAREN
+  ;
+
+argumentList
+  : argument (COMMA argument)*
+  ;
+
+argument
+  : ELLIPSIS? expr
+  ;
+
+exprSequence
+  : expr (COMMA expr)*
   ;
 
 expr
-  : andExpr (OR andExpr)*
+  : expr LBRACKET exprSequence RBRACKET # indexExpr
+  | expr DOT ID # memberExpr
+  | expr roll # exprRollExpr
+  | roll # rollExpr
+  | expr DIE # exprDieExpr
+  | DIE # DieExpr
+  | expr POW expr # powExpr
+  | expr arguments # argumentsExpr
+  | (PLUS | MINUS) expr # unarySignExpr
+  | expr (TIMES | DIV | IDIV | MOD) expr # multipyExpr
+  | expr (PLUS | MINUS) expr # addExpr
+  | expr (EQ | GT | LT | GTE | LTE) expr # compareExpr
+  | expr AND expr # AndExpr
+  | expr OR expr # OrExpr
+  | expr ASSIGN expr # assignExpr
+  | literal # atomExpr
+  | id # idExpr
+  | LPAREN exprSequence RPAREN # parenExpr
   ;
 
-andExpr
-  : cmprExpr (AND cmprExpr)*
-  ;
-
-cmprExpr
-  : addExpr (comparison addExpr)?
-  ;
-
-addExpr
-  : multExpr ((PLUS | MINUS) multExpr)*
-  ;
-
-multExpr
-  : powExpr ((TIMES | DIV | IDIV | MOD) powExpr)*
-  ;
-
-powExpr
-  : signedAtom (POW signedAtom)*
-  ;
-
-signedAtom
-  : PLUS signedAtom
-  | MINUS signedAtom
-  | function
-  | roll
-  | atom
-  ;
-
-atom
-  : number
-  | id
-  | literal
-  | string
-  | LPAREN expr RPAREN
-  ;
-
-number
-  : DECIMAL
-  | HEXADECIMAL
-  | BINARY
-  | FLOAT
+roll
+  : ROLL
   ;
 
 id
@@ -73,33 +62,30 @@ id
   ;
 
 literal
+  : nullLiteral
+  | booleanLiteral
+  | stringLiteral
+  | numericLiteral
+  ;
+
+numericLiteral
+  : DECIMAL
+  | HEXADECIMAL
+  | BINARY
+  | FLOAT
+  ;
+
+booleanLiteral
   : TRUE
   | FALSE
-  | NULL
+  ;
+
+nullLiteral
+  : NULL
   | UNDEFINED
   ;
 
-string
+stringLiteral
   : STRING
   ;
 
-function
-  : id LPAREN expr (COMMA expr)* RPAREN
-  | roll_func LPAREN expr (COMMA expr)* RPAREN
-  ;
-
-roll_func
-  : atom? DIE DOT id
-  ;
-
-roll
-  : atom? ROLL
-  ;
-
-comparison
-  : EQ
-  | GT
-  | LT
-  | GTE
-  | LTE
-;
