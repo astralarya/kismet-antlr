@@ -16,15 +16,19 @@ statement
   : expr
   ;
 
+arrayLiteral
+  : LBRACKET elementList COMMA? RBRACKET
+  ;
+
 arguments
-  : LPAREN (argumentList COMMA?)? RPAREN
+  : LPAREN (elementList COMMA?)? RPAREN
   ;
 
-argumentList
-  : argument (COMMA argument)*
+elementList
+  : element (COMMA element)*
   ;
 
-argument
+element
   : ELLIPSIS? expr
   ;
 
@@ -37,8 +41,8 @@ expr
   | expr DOT ID # memberExpr
   | expr roll # exprRollExpr
   | roll # rollExpr
-  | expr DIE # exprDieExpr
-  | DIE # DieExpr
+  | expr DIE arrayLiteral? # exprDieExpr
+  | DIE arrayLiteral? # DieExpr
   | expr POW expr # powExpr
   | expr arguments # argumentsExpr
   | (PLUS | MINUS) expr # unarySignExpr
@@ -50,6 +54,7 @@ expr
   | expr ASSIGN expr # assignExpr
   | literal # atomExpr
   | id # idExpr
+  | arrayLiteral # arrayLiteralExpr
   | LPAREN exprSequence RPAREN # parenExpr
   ;
 
