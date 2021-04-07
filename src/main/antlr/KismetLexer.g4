@@ -132,6 +132,25 @@ UNDEFINED
   : 'undefined'
   ;
 
+STRING
+  : '"' DOUBLE_QUOTE_CHAR* '"'
+  | '\'' SINGLE_QUOTE_CHAR* '\''
+  ;
+
+fragment DOUBLE_QUOTE_CHAR
+  : ~["\\\r\n]
+  | ESCAPE_SEQUENCE
+  ;
+
+fragment SINGLE_QUOTE_CHAR
+  : ~['\\\r\n]
+  | ESCAPE_SEQUENCE
+  ;
+
+fragment ESCAPE_SEQUENCE
+  : '\\' ~[\r\n]
+  ;
+
 VARIABLE
   : ID_START ID_CHAR*
   ;
@@ -165,12 +184,8 @@ fragment HEXADECIMAL_START
   | '0X'
   ;
 
-fragment HEX
-  : [0-9a-fA-F]
-  ;
-
 fragment HEXADECIMAL_CHAR
-  : HEX | '_'
+  : [0-9a-fA-F] | '_'
   ;
 
 BINARY

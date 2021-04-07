@@ -57,6 +57,7 @@ atom
   : number
   | variable
   | literal
+  | string
   | LPAREN expr RPAREN
   ;
 
@@ -67,6 +68,10 @@ number
   | FLOAT
   ;
 
+variable
+  : VARIABLE
+  ;
+
 literal
   : TRUE
   | FALSE
@@ -74,8 +79,8 @@ literal
   | UNDEFINED
   ;
 
-variable
-  : VARIABLE
+string
+  : STRING
   ;
 
 function
