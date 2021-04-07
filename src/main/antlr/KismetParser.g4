@@ -18,7 +18,7 @@ statement
   ;
 
 assignment
-  : variable ASSIGN expr
+  : id ASSIGN expr
   ;
 
 expr
@@ -55,7 +55,7 @@ signedAtom
 
 atom
   : number
-  | variable
+  | id
   | literal
   | string
   | LPAREN expr RPAREN
@@ -68,8 +68,8 @@ number
   | FLOAT
   ;
 
-variable
-  : VARIABLE
+id
+  : ID
   ;
 
 literal
@@ -84,20 +84,16 @@ string
   ;
 
 function
-  : roll_func LPAREN expr (COMMA expr)* RPAREN
-  | variable LPAREN expr (COMMA expr)* RPAREN
+  : id LPAREN expr (COMMA expr)* RPAREN
+  | roll_func LPAREN expr (COMMA expr)* RPAREN
   ;
 
 roll_func
-  : atom? ROLL_FUNC
+  : atom? DIE POINT id
   ;
 
 roll
   : atom? ROLL
-  ;
-
-die
-  : DIE
   ;
 
 comparison

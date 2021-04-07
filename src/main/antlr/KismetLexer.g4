@@ -107,10 +107,6 @@ ROLL
   : DIE ('0' .. '9')+
   ;
 
-ROLL_FUNC
-  : DIE '.' VARIABLE
-  ;
-
 DIE
   : 'd'
   | 'D'
@@ -151,7 +147,7 @@ fragment ESCAPE_SEQUENCE
   : '\\' ~[\r\n]
   ;
 
-VARIABLE
+ID
   : ID_START ID_CHAR*
   ;
 
