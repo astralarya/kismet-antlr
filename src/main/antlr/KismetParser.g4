@@ -46,6 +46,7 @@ expr
   | expr POW expr # powExpr
   | expr arguments # argumentsExpr
   | (PLUS | MINUS) expr # unarySignExpr
+  | NOT expr # unaryNotExpr
   | expr (TIMES | DIV | IDIV | MOD) expr # multipyExpr
   | expr (PLUS | MINUS) expr # addExpr
   | expr (EQ | GT | LT | GTE | LTE) expr # compareExpr

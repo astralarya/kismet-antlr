@@ -15,6 +15,7 @@ COMMA : ',' ;
 ASSIGN : '=' ;
 ELLIPSIS : '...' ;
 DOT : '.' ;
+NOT : '!' ;
 PLUS : '+' ;
 MINUS : '-' ;
 TIMES : '*' ;
@@ -27,8 +28,8 @@ GTE : '>=' | '≥' ;
 LTE : '<=' | '≤' ;
 EQ : '==' ;
 NEQ : '!=' | '≠' ;
-SS_AND : '&&' ;
-SS_OR : '||' ;
+AND : '&&' ;
+OR : '||' ;
 POW : '^' ;
 DIE : 'd' | 'D' ;
 
@@ -40,12 +41,6 @@ TRUE : 'true' ;
 FALSE : 'false' ;
 NULL : 'null' ;
 UNDEFINED : 'undefined' ;
-
-AND : 'and' ;
-OR : 'or' ;
-XOR : 'xor' ;
-NAND : 'nand' ;
-NOT : 'not' ;
 
 STRING
   : '"' DOUBLE_QUOTE_CHAR* '"'
